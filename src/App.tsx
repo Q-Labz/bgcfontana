@@ -14,20 +14,18 @@ import { HolidayBanner } from './components/announcements/HolidayBanner';
 import { useHolidayClosure } from './hooks/useHolidayClosure';
 import { DonorBanner } from './components/home/DonorBanner';
 
-function HomePage() {
-  return (
-    <div>
-      <Hero />
-      <Announcements />
-      <DonorBanner />
-      <AffiliatedClubs />
-    </div>
-  );
-}
+const HomePage: React.FC = () => (
+  <>
+    <Hero />
+    <Announcements />
+    <AffiliatedClubs />
+    <DonorBanner />
+  </>
+);
 
-export default function App() {
+const App: React.FC = () => {
+  const { isClosurePeriod } = useHolidayClosure();
   const [showBanner, setShowBanner] = useState(true);
-  const isClosurePeriod = useHolidayClosure();
 
   return (
     <Router>
@@ -41,7 +39,7 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/programs" element={<Programs isClosurePeriod={isClosurePeriod} />} />
+            <Route path="/programs" element={<Programs />} />
             <Route path="/give" element={<WaysToGive />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/club-info" element={<ClubInfo />} />
@@ -51,4 +49,6 @@ export default function App() {
       </div>
     </Router>
   );
-}
+};
+
+export default App;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Home } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { SITE_INFO } from '../../constants/siteInfo';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   isClosurePeriod: boolean;
@@ -31,12 +31,12 @@ export function Header({ isClosurePeriod }: HeaderProps) {
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold text-white">
-            {SITE_INFO.name}
+          <Link to="/" className="flex-shrink-0">
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-white/90 hover:text-white transition-colors flex items-center gap-2">
               <Home className="w-4 h-4" />
               <span>Home</span>
@@ -53,7 +53,7 @@ export function Header({ isClosurePeriod }: HeaderProps) {
             {!isClosurePeriod && (
               <Link 
                 to="/donate" 
-                className="bg-white text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors"
+                className="bg-white text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors font-semibold"
               >
                 Donate Now
               </Link>
@@ -62,7 +62,7 @@ export function Header({ isClosurePeriod }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white p-2 rounded-lg hover:bg-blue-700/50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
@@ -74,24 +74,41 @@ export function Header({ isClosurePeriod }: HeaderProps) {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-blue-600/95 backdrop-blur-sm border-t border-white/10">
-            <div className="flex flex-col space-y-4 p-4">
-              <Link to="/" className="text-white/90 hover:text-white transition-colors flex items-center gap-2">
+            <div className="flex flex-col space-y-4 p-6">
+              <Link 
+                to="/" 
+                className="text-white/90 hover:text-white transition-colors flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 <Home className="w-4 h-4" />
                 <span>Home</span>
               </Link>
-              <Link to="/programs" className="text-white/90 hover:text-white transition-colors">
+              <Link 
+                to="/programs" 
+                className="text-white/90 hover:text-white transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Programs
               </Link>
-              <Link to="/club-info" className="text-white/90 hover:text-white transition-colors">
+              <Link 
+                to="/club-info" 
+                className="text-white/90 hover:text-white transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Club Info
               </Link>
-              <Link to="/give" className="text-white/90 hover:text-white transition-colors">
+              <Link 
+                to="/give" 
+                className="text-white/90 hover:text-white transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Ways to Give
               </Link>
               {!isClosurePeriod && (
                 <Link 
                   to="/donate" 
-                  className="bg-white text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors text-center"
+                  className="bg-white text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors text-center font-semibold"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Donate Now
                 </Link>
