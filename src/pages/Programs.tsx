@@ -2,7 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { programs } from '../data/programs';
 
-export function Programs() {
+interface ProgramsProps {
+  isClosurePeriod: boolean;
+}
+
+export function Programs({ isClosurePeriod }: ProgramsProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-blue-600 py-24 px-4">

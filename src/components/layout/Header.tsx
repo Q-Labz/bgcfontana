@@ -50,6 +50,9 @@ export function Header({ isClosurePeriod }: HeaderProps) {
             <Link to="/give" className="text-white/90 hover:text-white transition-colors">
               Ways to Give
             </Link>
+            <Link to="/fundraising-events" className="text-white/90 hover:text-white transition-colors">
+              Events
+            </Link>
             {!isClosurePeriod && (
               <Link 
                 to="/donate" 
@@ -87,6 +90,9 @@ export function Header({ isClosurePeriod }: HeaderProps) {
               </Link>
               <Link to="/give" className="text-white/90 hover:text-white transition-colors">
                 Ways to Give
+              </Link>
+              <Link to="/fundraising-events" className="text-white/90 hover:text-white transition-colors">
+                Events
               </Link>
               {!isClosurePeriod && (
                 <Link 
